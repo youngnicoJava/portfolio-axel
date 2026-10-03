@@ -1,0 +1,22 @@
+// Local SVGs from Devicon and Simple Icons; licenses are included beside the assets.
+export const skillIcons: Record<string, string> = {
+  Java: "/icons/skills/java.svg",
+  Kotlin: "/icons/skills/kotlin.svg",
+  "Spring Boot": "/icons/skills/spring.svg",
+  Quarkus: "/icons/skills/quarkus.svg",
+  Angular: "/icons/skills/angular.svg",
+  React: "/icons/skills/react.svg",
+  TypeScript: "/icons/skills/typescript.svg",
+  PostgreSQL: "/icons/skills/postgresql.svg",
+  Oracle: "/icons/skills/oracle.svg",
+  Docker: "/icons/skills/docker.svg",
+  Linux: "/icons/skills/linux.svg",
+  Kafka: "/icons/skills/apachekafka.svg",
+  GitLab: "/icons/skills/gitlab.svg",
+  AWS: "/icons/skills/amazonwebservices.svg",
+  Go: "/icons/skills/go.svg",
+  Python: "/icons/skills/python.svg",
+  Flyway: "/icons/skills/flyway.svg",
+  Excel: "/icons/skills/excel.svg",
+  "Power BI": "/icons/skills/powerbi.svg",
+};

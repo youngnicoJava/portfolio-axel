@@ -1,122 +1,202 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import { useLanguage } from "./hooks/useLanguage";
+import { LanguageProvider } from "./components/LanguageProvider";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { ArrowUpRight, Check, Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "./hooks/useTheme";
+import { profile } from "./data/portfolio";
+import type { Project } from "./types/project";
+import Home from "./pages/Home";
+const ProjectPage = lazy(() => import("./pages/ProjectPage"));
+const DemoDialog = lazy(() => import("./components/DemoDialog"));
+function Portfolio() {
+  const { t, language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [demo, setDemo] = useState<Project | null>(null);
+  const [toast, setToast] = useState("");
+  const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      if (location.hash)
+        document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      else window.scrollTo(0, 0);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location]);
+  useEffect(() => () => clearTimeout(timer.current), []);
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setToast(t("Email copied"));
+    } catch {
+      setToast(t("Could not copy. Select the email to copy manually."));
+    }
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setToast(""), 3000);
+  }
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+      <a className="skip-link" href="#main-content">
+        {t("Skip to content")}
+      </a>
+      <header className="site-header">
+        <div className="nav-inner">
+          <Link className="wordmark" to="/" aria-label={t("Axel Fecha home")}>
+            axel<span>fecha</span>
+            <span className="brand-dot">.</span>
+          </Link>
+          <nav
+            id="main-nav"
+            className={menuOpen ? "navigation open" : "navigation"}
+            aria-label={t("Main navigation")}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") {
+                setMenuOpen(false);
+                menuButton.current?.focus();
+              }
+            }}
+          >
+            {["projects", "skills", "about", "contact"].map((section) => (
+              <Link
+                key={section}
+                to={`/#${section}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {t(section.charAt(0).toUpperCase() + section.slice(1))}
+              </Link>
+            ))}
+          </nav>
+          <div className="nav-actions">
+            <div
+              className="language-selector"
+              role="group"
+              aria-label={language === "es" ? "Idioma" : "Language"}
+            >
+              <button
+                onClick={() => setLanguage("es")}
+                aria-label="Español"
+                aria-pressed={language === "es"}
+              >
+                ES
+              </button>
+              <span aria-hidden="true">/</span>
+              <button
+                onClick={() => setLanguage("en")}
+                aria-label="English"
+                aria-pressed={language === "en"}
+              >
+                EN
+              </button>
+            </div>
+            <span className="nav-note">
+              {t("LET’S BUILD SOMETHING")}
+              <ArrowUpRight size={13} />
+            </span>
+            <button
+              className="icon-button theme-button"
+              onClick={toggleTheme}
+              aria-label={t(
+                theme === "light"
+                  ? "Switch to dark mode"
+                  : "Switch to light mode",
+              )}
+            >
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+            <button
+              ref={menuButton}
+              className="icon-button menu-button"
+              aria-label={
+                menuOpen ? t("Close navigation") : t("Open navigation")
+              }
+              aria-expanded={menuOpen}
+              aria-controls="main-nav"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+      </header>
+      <Suspense
+        fallback={
+          <main className="section loading" aria-busy="true">
+            {t("Loading project…")}
+          </main>
+        }
+      >
+        <Routes>
+          <Route
+            path="/"
+            element={<Home onDemo={setDemo} onCopy={copyEmail} />}
+          />
+          <Route
+            path="/projects/:slug"
+            element={<ProjectPage onDemo={setDemo} />}
+          />
+          <Route
+            path="*"
+            element={
+              <main id="main-content" className="section not-found">
+                <h1>{t("Page not found.")}</h1>
+                <Link to="/">{t("Back home")}</Link>
+              </main>
+            }
+          />
+        </Routes>
+      </Suspense>
+      <footer className="section site-footer">
+        <Link className="wordmark" to="/">
+          axel<span>fecha</span>
+          <span className="brand-dot">.</span>
+        </Link>
+        <span>© {new Date().getFullYear()} Axel Fecha</span>
+        <span>{t("Built with intention.")}</span>
+        <a className="back-to-top" href="#main-content">
+          {t("Back to top ↑")}
+        </a>
+      </footer>
+      {demo && (
+        <Suspense
+          fallback={
+            <div className="toast visible" role="status">
+              {t("Opening demo…")}
+            </div>
+          }
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+          <DemoDialog project={demo} onClose={() => setDemo(null)} />
+        </Suspense>
+      )}
+      <div
+        className={toast ? "toast visible" : "toast"}
+        role="status"
+        aria-live="polite"
+      >
+        {toast && (
+          <>
+            <Check size={16} />
+            {toast}
+          </>
+        )}
+      </div>
     </>
-  )
+  );
 }
-
-export default App
+export default function App() {
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <Portfolio />
+      </BrowserRouter>
+    </LanguageProvider>
+  );
+}
