@@ -7,7 +7,7 @@ export const profile = {
   location: "GBA Norte, Buenos Aires, Argentina",
   github: "https://github.com/youngnicoJava",
   linkedin: "https://www.linkedin.com/in/axel-fecha-225837274/",
-  cv: undefined as string | undefined,
+  cv: "/CV_Axel_Fecha_Fullstack_Java_Angular.pdf" as string | undefined,
 };
 export const projects: Project[] = [
   {
@@ -119,8 +119,8 @@ export const skillGroups = [
     title: "Backend engineering",
     skills: ["Java", "Kotlin", "Spring Boot", "Quarkus"],
   },
-  { title: "Frontend", skills: ["Angular", "TypeScript"] },
-  { title: "Data", skills: ["PostgreSQL", "Oracle", "Kafka", "SQL", "Flyway"] },
+  { title: "Frontend", skills: ["Angular", "React", "TypeScript"] },
+  { title: "Data", skills: ["PostgreSQL", "Kafka", "SQL", "Flyway"] },
   {
     title: "Architecture",
     skills: [
@@ -135,7 +135,6 @@ export const skillGroups = [
 
 // Technologies with practical experience outside the primary stack.
 export const additionalSkills: string[] = [
-  "React",
   "AWS",
   "Go",
   "Python",
