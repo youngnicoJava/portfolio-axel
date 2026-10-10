@@ -12,13 +12,15 @@ export const profile = {
 export const projects: Project[] = [
   {
     slug: "fixy",
+    liveDemoUrl: "https://youngnicoJava.github.io/fixy-demo-frontend/",
+    demoRepositoryUrl: "https://github.com/youngnicoJava/fixy-demo-frontend",
     title: "Fixy",
     category: "Service platform",
     shortDescription:
       "Connecting everyday problems with the right professionals.",
     description:
       "A service platform concept bringing requests, professionals and follow-up into one clear experience. This is placeholder project information.",
-    technologies: ["React", "TypeScript", "Spring Boot", "PostgreSQL"],
+    technologies: ["Angular", "TypeScript", "Spring Boot", "PostgreSQL"],
     highlights: [
       "Discover a professional",
       "Manage service requests",

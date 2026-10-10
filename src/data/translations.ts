@@ -1,4 +1,6 @@
 export const spanish: Record<string, string> = {
+  "Interactive demo": "Demo interactiva",
+  "Demo source": "Código de la demo",
   "Also in my toolkit": "También trabajo con",
   "Hands-on experience beyond my primary stack.":
     "Experiencia práctica fuera de mi stack principal.",

@@ -89,6 +89,16 @@ export function FeaturedProjects({
                 ))}
               </div>
               <div className="project-actions">
+                {project.liveDemoUrl && (
+                  <ProfessionalLink href={project.liveDemoUrl} className="button secondary">
+                    {t("Interactive demo")}
+                  </ProfessionalLink>
+                )}
+                {project.demoRepositoryUrl && (
+                  <ProfessionalLink href={project.demoRepositoryUrl} className="text-button">
+                    <Github size={16} /> {t("Demo source")}
+                  </ProfessionalLink>
+                )}
                 <button
                   className="button demo-button"
                   onClick={() => onDemo(project)}

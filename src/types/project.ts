@@ -9,6 +9,8 @@ export interface Project {
   demoGif?: string;
   videoUrl?: string;
   repositoryUrl?: string;
+  liveDemoUrl?: string;
+  demoRepositoryUrl?: string;
   highlights: string[];
   accent: string;
   preview: "service" | "banking";
