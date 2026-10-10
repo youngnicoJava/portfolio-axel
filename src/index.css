@@ -1719,3 +1719,46 @@ p {
     transform: none;
   }
 }
+
+/* Real screenshots fill their frame; controls stay outside the image. */
+.project-preview.has-gallery {
+  aspect-ratio: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.project-gallery-link { display: block; }
+.project-gallery-viewport {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #101820;
+}
+.project-gallery-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 250ms ease;
+}
+.project-gallery-slide { flex: 0 0 100%; min-width: 0; height: 100%; }
+.project-gallery-viewport .project-image { width: 100%; height: 100%; object-fit: contain; }
+.project-gallery-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 64px;
+  padding: 8px 12px;
+}
+.project-gallery-caption { min-width: 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.project-gallery-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.gallery-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.gallery-arrow:hover { background: var(--accent-soft); border-color: var(--accent); }
+.project-gallery-count { min-width: 38px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .project-gallery-track { transition: none; } }

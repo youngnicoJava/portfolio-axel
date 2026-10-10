@@ -12,6 +12,36 @@ export const profile = {
 export const projects: Project[] = [
   {
     slug: "fixy",
+    screenshots: [
+      {
+        src: "/projects/fixy/fixy-home.png",
+        label: "Home",
+      },
+      {
+        src: "/projects/fixy/auth-login.jpg",
+        label: "Authentication",
+      },
+      {
+        src: "/projects/fixy/client-dashboard.jpg",
+        label: "Client dashboard",
+      },
+      {
+        src: "/projects/fixy/worker-dashboard.jpg",
+        label: "Worker dashboard",
+      },
+      {
+        src: "/projects/fixy/address-modal.jpg",
+        label: "Address selection",
+      },
+      {
+        src: "/projects/fixy/request-matched-agreement.jpg",
+        label: "Service agreement",
+      },
+      {
+        src: "/projects/fixy/conversation-contract.jpg",
+        label: "Conversation and agreement",
+      },
+    ],
     liveDemoUrl: "https://youngnicoJava.github.io/fixy-demo-frontend/",
     demoRepositoryUrl: "https://github.com/youngnicoJava/fixy-demo-frontend",
     image: "/projects/fixy/fixy-home.png",
@@ -35,6 +65,36 @@ export const projects: Project[] = [
   },
   {
     slug: "loan-origination",
+    screenshots: [
+      {
+        src: "/projects/loan-origination/customer-dashboard.jpg",
+        label: "Customer dashboard",
+      },
+      {
+        src: "/projects/loan-origination/keycloak.jpg",
+        label: "Authentication",
+      },
+      {
+        src: "/projects/loan-origination/application-approved.jpg",
+        label: "Approved application",
+      },
+      {
+        src: "/projects/loan-origination/operations-dashboard.jpg",
+        label: "Operations dashboard",
+      },
+      {
+        src: "/projects/loan-origination/offer-detail.jpg",
+        label: "Accepted offer",
+      },
+      {
+        src: "/projects/loan-origination/loan-active.jpg",
+        label: "Loan and repayment schedule",
+      },
+      {
+        src: "/projects/loan-origination/audit-events.jpg",
+        label: "Audit trail",
+      },
+    ],
     image: "/projects/loan-origination/customer-dashboard.jpg",
     title: "Loan Origination Platform",
     repositoryUrl: "https://github.com/youngnicoJava/loan-approval-engine",
@@ -54,11 +114,38 @@ export const projects: Project[] = [
   },
   {
     slug: "credit-risk-engine",
+    screenshots: [
+      {
+        src: "/projects/credit-risk-engine/assessments.jpg",
+        label: "Assessment history",
+      },
+      {
+        src: "/projects/credit-risk-engine/keycloak.jpg",
+        label: "Authentication",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessment-approve.jpg",
+        label: "Approved assessment",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessment-explanation.jpg",
+        label: "Score explanation",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessment-refer.jpg",
+        label: "Manual review",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessment-reject.jpg",
+        label: "Rejected assessment",
+      },
+    ],
     image: "/projects/credit-risk-engine/assessments.jpg",
     title: "Credit Risk Engine",
     repositoryUrl: "https://github.com/youngnicoJava/credit-risk-engine",
     category: "Credit risk",
-    shortDescription: "Explainable credit decisions based on eligibility, affordability and scoring.",
+    shortDescription:
+      "Explainable credit decisions based on eligibility, affordability and scoring.",
     description:
       "An independent credit risk service with versioned policies and a framework-free hexagonal domain. It returns approval, review or rejection with reasons and score evidence. An analyst console explains assessments, while Kafka connects the service to loan origination.",
     technologies: ["Java", "Quarkus", "PostgreSQL", "Kafka", "React"],
@@ -72,11 +159,38 @@ export const projects: Project[] = [
   },
   {
     slug: "fraud-detection-engine",
+    screenshots: [
+      {
+        src: "/projects/fraud-detection-engine/cases.jpg",
+        label: "Investigation queue",
+      },
+      {
+        src: "/projects/fraud-detection-engine/keycloak.jpg",
+        label: "Authentication",
+      },
+      {
+        src: "/projects/fraud-detection-engine/assessments.jpg",
+        label: "Assessment history",
+      },
+      {
+        src: "/projects/fraud-detection-engine/assessment-review.jpg",
+        label: "Fraud signals",
+      },
+      {
+        src: "/projects/fraud-detection-engine/case-resolved.jpg",
+        label: "Case resolution",
+      },
+      {
+        src: "/projects/fraud-detection-engine/case-history.jpg",
+        label: "Investigation history",
+      },
+    ],
     image: "/projects/fraud-detection-engine/cases.jpg",
     title: "Fraud Detection Engine",
     repositoryUrl: "https://github.com/youngnicoJava/fraud-detection-engine",
     category: "Fraud detection",
-    shortDescription: "Rule-based fraud signals with an investigation queue for analysts.",
+    shortDescription:
+      "Rule-based fraud signals with an investigation queue for analysts.",
     description:
       "An independent service that evaluates suspicious loan application behavior using deterministic rules. Its modular layered architecture supports explained assessments and manual case investigation. Case resolutions are published through a transactional outbox and versioned Kafka events; loan origination retains ownership of credit decisions.",
     technologies: ["Java", "Quarkus", "PostgreSQL", "Kafka", "React"],

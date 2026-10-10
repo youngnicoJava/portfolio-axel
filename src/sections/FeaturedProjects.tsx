@@ -64,13 +64,7 @@ export function FeaturedProjects({
         <div className="project-track-inner">
           {projects.map((project, index) => (
             <article className="project-card" key={project.slug}>
-              <Link
-                to={`/projects/${project.slug}`}
-                className="preview-link"
-                aria-label={`${t("Explore")} ${project.title}`}
-              >
-                <ProjectPreview project={project} />
-              </Link>
+              <ProjectPreview project={project} href={`/projects/${project.slug}`} />
               <div className="project-meta">
                 <span>{project.category}</span>
                 <span>0{index + 1}</span>

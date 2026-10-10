@@ -91,7 +91,7 @@ export default function DemoDialog({
           }}
         />
       ) : (
-        <ProjectPreview project={project} />
+        <ProjectPreview key={project.slug} project={project} />
       )}
       <div className="dialog-caption">
         {project.demoGif || project.demoVideo ? (

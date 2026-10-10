@@ -1,4 +1,29 @@
 export const spanish: Record<string, string> = {
+  "Image gallery": "Galería de imágenes",
+  "Previous image": "Imagen anterior",
+  "Next image": "Imagen siguiente",
+  Home: "Inicio",
+  Authentication: "Autenticación",
+  "Client dashboard": "Dashboard del cliente",
+  "Worker dashboard": "Dashboard del profesional",
+  "Address selection": "Selección de dirección",
+  "Service agreement": "Acuerdo de servicio",
+  "Conversation and agreement": "Conversación y acuerdo",
+  "Customer dashboard": "Dashboard del cliente",
+  "Approved application": "Solicitud aprobada",
+  "Operations dashboard": "Dashboard de operaciones",
+  "Accepted offer": "Oferta aceptada",
+  "Loan and repayment schedule": "Préstamo y calendario de cuotas",
+  "Audit trail": "Auditoría",
+  "Assessment history": "Historial de evaluaciones",
+  "Approved assessment": "Evaluación aprobada",
+  "Score explanation": "Explicación del puntaje",
+  "Manual review": "Revisión manual",
+  "Rejected assessment": "Evaluación rechazada",
+  "Investigation queue": "Cola de investigación",
+  "Fraud signals": "Señales de fraude",
+  "Case resolution": "Resolución del caso",
+  "Investigation history": "Historial de investigación",
   "Interactive demo": "Demo interactiva",
   "Demo source": "Código de la demo",
   "Technical skills": "Habilidades técnicas",
@@ -12,23 +37,32 @@ export const spanish: Record<string, string> = {
     "Desde la solicitud hasta el desembolso, con un flujo financiero trazable.",
   "A modular loan origination platform covering customers, applications, evaluations, offers, loans, disbursements and installments. A hexagonal domain, role-based access, audit records and transactional outbox keep the financial workflow traceable.":
     "Plataforma modular de originación de préstamos que abarca clientes, solicitudes, evaluaciones, ofertas, préstamos, desembolsos y cuotas. Un dominio hexagonal, acceso por roles, auditoría y outbox transaccional permiten seguir cada etapa del flujo financiero.",
-  "Applications, evaluations and loan offers": "Solicitudes, evaluaciones y ofertas de préstamo",
-  "Disbursements and installment tracking": "Desembolsos y seguimiento de cuotas",
-  "Role-based access and audit trail": "Acceso por roles y trazabilidad de auditoría",
+  "Applications, evaluations and loan offers":
+    "Solicitudes, evaluaciones y ofertas de préstamo",
+  "Disbursements and installment tracking":
+    "Desembolsos y seguimiento de cuotas",
+  "Role-based access and audit trail":
+    "Acceso por roles y trazabilidad de auditoría",
   "Explainable credit decisions based on eligibility, affordability and scoring.":
     "Decisiones crediticias explicables según elegibilidad, capacidad de pago y scoring.",
   "An independent credit risk service with versioned policies and a framework-free hexagonal domain. It returns approval, review or rejection with reasons and score evidence. An analyst console explains assessments, while Kafka connects the service to loan origination.":
     "Servicio independiente de riesgo crediticio con políticas versionadas y un dominio hexagonal sin dependencias de frameworks. Devuelve aprobación, revisión o rechazo con motivos y evidencia del puntaje. Una consola permite analizar las evaluaciones y Kafka conecta el servicio con la originación de préstamos.",
-  "Eligibility, affordability and versioned scoring": "Elegibilidad, capacidad de pago y scoring versionado",
-  "Decision explanations and score factors": "Explicación de decisiones y factores del puntaje",
-  "Filtered analyst console and Kafka integration": "Consola de análisis con filtros e integración Kafka",
+  "Eligibility, affordability and versioned scoring":
+    "Elegibilidad, capacidad de pago y scoring versionado",
+  "Decision explanations and score factors":
+    "Explicación de decisiones y factores del puntaje",
+  "Filtered analyst console and Kafka integration":
+    "Consola de análisis con filtros e integración Kafka",
   "Rule-based fraud signals with an investigation queue for analysts.":
     "Señales de fraude basadas en reglas y una cola de investigación para analistas.",
   "An independent service that evaluates suspicious loan application behavior using deterministic rules. Its modular layered architecture supports explained assessments and manual case investigation. Case resolutions are published through a transactional outbox and versioned Kafka events; loan origination retains ownership of credit decisions.":
     "Servicio independiente que evalúa comportamientos sospechosos en solicitudes de préstamo mediante reglas deterministas. Su arquitectura modular por capas permite explicar evaluaciones e investigar casos manualmente. Las resoluciones se publican mediante outbox transaccional y eventos Kafka versionados; la originación conserva el control de las decisiones crediticias.",
-  "Application velocity and financial-change signals": "Frecuencia de solicitudes y señales de cambios financieros",
-  "Manual investigation and case resolution": "Investigación manual y resolución de casos",
-  "Auditable case actions and Kafka resolution events": "Acciones auditables y eventos de resolución por Kafka",
+  "Application velocity and financial-change signals":
+    "Frecuencia de solicitudes y señales de cambios financieros",
+  "Manual investigation and case resolution":
+    "Investigación manual y resolución de casos",
+  "Auditable case actions and Kafka resolution events":
+    "Acciones auditables y eventos de resolución por Kafka",
   "Also in my toolkit": "También trabajo con",
   "Hands-on experience beyond my primary stack.":
     "Experiencia práctica fuera de mi stack principal.",

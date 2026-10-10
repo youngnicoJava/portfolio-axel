@@ -51,7 +51,7 @@ export default function ProjectPage({
           <span key={tech}>{tech}</span>
         ))}
       </div>
-      <ProjectPreview project={project} />
+      <ProjectPreview key={project.slug} project={project} />
       <div className="project-detail-grid">
         <div>
           <span className="eyebrow">{t("THE IDEA")}</span>

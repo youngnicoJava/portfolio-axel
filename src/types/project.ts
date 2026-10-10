@@ -6,6 +6,7 @@ export interface Project {
   category: string;
   technologies: string[];
   image?: string;
+  screenshots?: { src: string; label: string }[];
   demoGif?: string;
   demoVideo?: string;
   demoPlaybackRate?: number;
