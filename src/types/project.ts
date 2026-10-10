@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   category: string;
   technologies: string[];
+  stackSkills?: string[];
   image?: string;
   screenshots?: { src: string; label: string }[];
   demoGif?: string;

@@ -1,3 +1,4 @@
+import { PROJECT_DRAG_TYPE } from "../lib/projectStack";
 import { useLanguage } from "../hooks/useLanguage";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
@@ -6,6 +7,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Play,
+  GripVertical,
 } from "lucide-react";
 import { Github } from "../components/BrandIcons";
 import { Link } from "react-router-dom";
@@ -15,8 +17,16 @@ import { ProjectPreview } from "../components/ProjectPreview";
 import { ProfessionalLink } from "../components/ProfessionalLink";
 export function FeaturedProjects({
   onDemo,
+  onSelectStack,
+  onDragProject,
+  draggingProject,
+  selectedStack,
 }: {
   onDemo: (project: Project) => void;
+  onSelectStack: (slug: string) => void;
+  onDragProject: (slug: string | null) => void;
+  draggingProject: string | null;
+  selectedStack: string | null;
 }) {
   const { t } = useLanguage();
   const track = useRef<HTMLDivElement>(null);
@@ -39,6 +49,7 @@ export function FeaturedProjects({
   }, []);
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
+      if (draggingProject) return;
       const key = event.key.toLowerCase();
       if (
         (key !== "q" && key !== "e") ||
@@ -75,7 +86,7 @@ export function FeaturedProjects({
       window.removeEventListener("keydown", onKeyDown);
       clearTimeout(pulseTimer.current);
     };
-  }, [move]);
+  }, [move, draggingProject]);
   return (
     <section ref={section} id="projects" className="section projects-section">
       <div className="section-heading">
@@ -118,7 +129,10 @@ export function FeaturedProjects({
         >
           <div className="project-track-inner">
             {projects.map((project, index) => (
-              <article className="project-card" key={project.slug}>
+              <article
+                className={`project-card ${draggingProject === project.slug ? "is-dragging" : ""}`}
+                key={project.slug}
+              >
                 <ProjectPreview
                   project={project}
                   href={`/projects/${project.slug}`}
@@ -139,6 +153,29 @@ export function FeaturedProjects({
                   {project.technologies.map((tech) => (
                     <span key={tech}>{tech}</span>
                   ))}
+                </div>
+                <div className="project-stack-action">
+                  <button
+                    type="button"
+                    className="stack-handle"
+                    draggable
+                    aria-label={`${t("View technologies")}: ${project.title}`}
+                    aria-pressed={selectedStack === project.slug}
+                    title={t("Drag to skills or click to view the stack")}
+                    onClick={() => onSelectStack(project.slug)}
+                    onDragStart={(event) => {
+                      event.dataTransfer.setData(
+                        PROJECT_DRAG_TYPE,
+                        project.slug,
+                      );
+                      event.dataTransfer.effectAllowed = "copy";
+                      onDragProject(project.slug);
+                    }}
+                    onDragEnd={() => onDragProject(null)}
+                  >
+                    <GripVertical size={15} aria-hidden="true" />{" "}
+                    {t("View technologies")}
+                  </button>
                 </div>
                 <div className="project-actions">
                   {project.liveDemoUrl && (
@@ -187,7 +224,7 @@ export function FeaturedProjects({
       <div className="project-footnote">
         <span>{t("04 projects · Draft content")}</span>
         <span>
-          {t("Scroll to explore")}
+          {t("Drag a project to Skills or choose View technologies")}
           <ArrowRight size={14} />
         </span>
       </div>

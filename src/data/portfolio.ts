@@ -13,11 +13,28 @@ export const profile = {
 export const projects: Project[] = [
   {
     slug: "fixy",
+    stackSkills: [
+      "Java",
+      "Kotlin",
+      "Spring Boot",
+      "Angular",
+      "TypeScript",
+      "PostgreSQL",
+      "Kafka",
+      "Go",
+      "SQL",
+      "Layered architecture",
+      "Microservices",
+      "Domain modeling",
+    ],
     screenshots: [
       { src: "/projects/fixy/fixy-home.png", label: "Home" },
       { src: "/projects/fixy/worker-dashboard.png", label: "Worker dashboard" },
       { src: "/projects/fixy/address-modal.jpg", label: "Address selection" },
-      { src: "/projects/fixy/service-agreement.png", label: "Service agreement" },
+      {
+        src: "/projects/fixy/service-agreement.png",
+        label: "Service agreement",
+      },
     ],
     liveDemoUrl: "https://youngnicoJava.github.io/fixy-demo-frontend/",
     demoRepositoryUrl: "https://github.com/youngnicoJava/fixy-demo-frontend",
@@ -42,11 +59,36 @@ export const projects: Project[] = [
   },
   {
     slug: "loan-origination",
+    stackSkills: [
+      "Java",
+      "Quarkus",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Kafka",
+      "Flyway",
+      "SQL",
+      "Docker",
+      "Hexagonal architecture",
+      "Domain modeling",
+    ],
     screenshots: [
-      { src: "/projects/loan-origination/customer-dashboard.jpg", label: "Customer dashboard" },
-      { src: "/projects/loan-origination/keycloak.jpg", label: "Authentication" },
-      { src: "/projects/loan-origination/operations-dashboard.jpg", label: "Operations dashboard" },
-      { src: "/projects/loan-origination/loan-active.jpg", label: "Loan and repayment schedule" },
+      {
+        src: "/projects/loan-origination/customer-dashboard.jpg",
+        label: "Customer dashboard",
+      },
+      {
+        src: "/projects/loan-origination/keycloak.jpg",
+        label: "Authentication",
+      },
+      {
+        src: "/projects/loan-origination/operations-dashboard.jpg",
+        label: "Operations dashboard",
+      },
+      {
+        src: "/projects/loan-origination/loan-active.jpg",
+        label: "Loan and repayment schedule",
+      },
     ],
     image: "/projects/loan-origination/customer-dashboard.jpg",
     title: "Loan Origination Platform",
@@ -67,10 +109,32 @@ export const projects: Project[] = [
   },
   {
     slug: "credit-risk-engine",
+    stackSkills: [
+      "Java",
+      "Quarkus",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Kafka",
+      "Flyway",
+      "SQL",
+      "Docker",
+      "Hexagonal architecture",
+      "Domain modeling",
+    ],
     screenshots: [
-      { src: "/projects/credit-risk-engine/assessment-approve.jpg", label: "Credit score and band" },
-      { src: "/projects/credit-risk-engine/assessments.jpg", label: "Assessment history" },
-      { src: "/projects/credit-risk-engine/assessment-explanation.jpg", label: "Score explanation" },
+      {
+        src: "/projects/credit-risk-engine/assessment-approve.jpg",
+        label: "Credit score and band",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessments.jpg",
+        label: "Assessment history",
+      },
+      {
+        src: "/projects/credit-risk-engine/assessment-explanation.jpg",
+        label: "Score explanation",
+      },
     ],
     image: "/projects/credit-risk-engine/assessments.jpg",
     title: "Credit Risk Engine",
@@ -91,11 +155,36 @@ export const projects: Project[] = [
   },
   {
     slug: "fraud-detection-engine",
+    stackSkills: [
+      "Java",
+      "Quarkus",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Kafka",
+      "Flyway",
+      "SQL",
+      "Docker",
+      "Layered architecture",
+      "Domain modeling",
+    ],
     screenshots: [
-      { src: "/projects/fraud-detection-engine/assessment-pass.jpg", label: "No fraud signals: PASS" },
-      { src: "/projects/fraud-detection-engine/assessment-review.jpg", label: "Fraud signals: REVIEW" },
-      { src: "/projects/fraud-detection-engine/case-resolved.jpg", label: "Case resolution" },
-      { src: "/projects/fraud-detection-engine/assessments.jpg", label: "Assessment history" },
+      {
+        src: "/projects/fraud-detection-engine/assessment-pass.jpg",
+        label: "No fraud signals: PASS",
+      },
+      {
+        src: "/projects/fraud-detection-engine/assessment-review.jpg",
+        label: "Fraud signals: REVIEW",
+      },
+      {
+        src: "/projects/fraud-detection-engine/case-resolved.jpg",
+        label: "Case resolution",
+      },
+      {
+        src: "/projects/fraud-detection-engine/assessments.jpg",
+        label: "Assessment history",
+      },
     ],
     image: "/projects/fraud-detection-engine/cases.jpg",
     title: "Fraud Detection Engine",

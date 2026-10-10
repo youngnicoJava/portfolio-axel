@@ -1,11 +1,7 @@
+import { useState } from "react";
+import { resolveStackProject } from "../lib/projectStack";
 import { useLanguage } from "../hooks/useLanguage";
-import {
-  ArrowDown,
-  ArrowUpRight,
-  Copy,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { ArrowDown, ArrowUpRight, Copy, Phone, MapPin } from "lucide-react";
 import { Github, Linkedin } from "../components/BrandIcons";
 import { profile } from "../data/portfolio";
 import { ProfessionalLink } from "../components/ProfessionalLink";
@@ -23,6 +19,21 @@ export default function Home({
   onCopy: () => void;
 }) {
   const { t } = useLanguage();
+  const [selectedStack, setSelectedStack] = useState<Project | null>(null);
+  const [draggingProject, setDraggingProject] = useState<string | null>(null);
+  function selectStack(slug: string) {
+    const project = resolveStackProject(slug);
+    if (!project) return;
+    setSelectedStack(project);
+    const skills = document.getElementById("skills");
+    skills?.focus({ preventScroll: true });
+    skills?.scrollIntoView({
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+      block: "start",
+    });
+  }
   return (
     <main id="main-content">
       <section className="hero section">
@@ -78,7 +89,14 @@ export default function Home({
         </div>
         <div className="portrait-composition round-portrait">
           <div className="portrait-frame has-photo">
-            <img className="portrait-photo" src={profile.photo} alt={profile.name} width={1200} height={1600} decoding="async" />
+            <img
+              className="portrait-photo"
+              src={profile.photo}
+              alt={profile.name}
+              width={1200}
+              height={1600}
+              decoding="async"
+            />
           </div>
           <span className="portrait-coordinate">
             {t("A human approach to software.")}
@@ -95,8 +113,19 @@ export default function Home({
           </a>
         </div>
       </section>
-      <FeaturedProjects onDemo={onDemo} />
-      <EngineeringSkills />
+      <FeaturedProjects
+        onDemo={onDemo}
+        onSelectStack={selectStack}
+        onDragProject={setDraggingProject}
+        draggingProject={draggingProject}
+        selectedStack={selectedStack?.slug ?? null}
+      />
+      <EngineeringSkills
+        selectedProject={selectedStack}
+        draggingProject={draggingProject}
+        onSelectStack={selectStack}
+        onClear={() => setSelectedStack(null)}
+      />
       <section id="about" className="section about-section">
         <div>
           <span className="eyebrow">{t("03 / ABOUT ME")}</span>

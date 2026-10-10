@@ -1,4 +1,17 @@
 export const spanish: Record<string, string> = {
+  "View technologies": "Ver tecnologías",
+  "Drag to skills or click to view the stack":
+    "Arrastrá hacia Skills o hacé clic para ver el stack",
+  "Drag a project to Skills or choose View technologies":
+    "Arrastrá un proyecto hacia Skills o elegí Ver tecnologías",
+  "Drop the project here to explore its stack":
+    "Soltá el proyecto acá para explorar su stack",
+  "Highlighted technologies used in this project":
+    "Tecnologías utilizadas en este proyecto resaltadas",
+  "Drag a project here or select View technologies on a card":
+    "Arrastrá un proyecto acá o elegí Ver tecnologías en una card",
+  "Clear selection": "Limpiar selección",
+  "Used in": "Utilizado en",
   "Professional service": "Servicio del profesional",
   "Credit score and band": "Score crediticio y banda",
   "No fraud signals: PASS": "Sin señales de fraude: PASS",

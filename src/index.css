@@ -1780,3 +1780,23 @@ p {
 .round-portrait .portrait-photo { object-position: 50% 38%; }
 .round-portrait .portrait-mark { display: none; }
 @media (max-width: 600px) { .round-portrait { width: 100%; justify-self: stretch; gap: 18px; } .round-portrait .portrait-frame { width: 104px; height: 104px; margin: 0; } }
+
+/* Stack exploration stays within the existing projects and skills sections. */
+.project-stack-action { margin-top: 14px; }
+.stack-handle { display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 12px; cursor: grab; }
+.stack-handle:hover, .stack-handle[aria-pressed="true"] { color: var(--accent); }
+.stack-handle:active { cursor: grabbing; }
+.project-card.is-dragging { opacity: .65; }
+.skills-section { scroll-margin-top: 100px; border-radius: 10px; outline-offset: 8px; }
+.skills-section.awaiting-project { outline: 1px dashed var(--accent); }
+.skills-section.drop-active { outline: 2px solid var(--accent); background: var(--accent-soft); }
+.stack-selection { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 42px; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.stack-selection p { margin: 0; font-size: 12px; line-height: 1.6; color: var(--muted); }
+.stack-selection strong { color: var(--text); }
+.stack-selection button { flex-shrink: 0; font-size: 11px; }
+.skill-marker { position: relative; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.skill-used .skill-marker::before { content: ''; position: absolute; inset: -4px; border: 1.5px solid #58b87b; border-radius: 50%; animation: stack-ring-in 300ms ease-out; }
+.skill-check { position: absolute; right: -7px; top: -7px; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; background: #58b87b; color: #102a19; box-shadow: 0 0 0 2px var(--surface); animation: stack-check-in 400ms cubic-bezier(.2,.9,.3,1.4); }
+@keyframes stack-ring-in { from { opacity: 0; transform: scale(.75); } to { opacity: 1; transform: scale(1); } }
+@keyframes stack-check-in { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: scale(1); } }
+@media (max-width: 600px) { .stack-selection { align-items: flex-start; flex-direction: column; gap: 8px; } .project-footnote { gap: 12px; flex-wrap: wrap; } .project-footnote > span:last-child { max-width: 240px; line-height: 1.6; } }
