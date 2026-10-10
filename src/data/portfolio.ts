@@ -35,6 +35,7 @@ export const projects: Project[] = [
   },
   {
     slug: "loan-origination",
+    image: "/projects/loan-origination/customer-dashboard.jpg",
     title: "Loan Origination Platform",
     repositoryUrl: "https://github.com/youngnicoJava/loan-approval-engine",
     category: "Financial software",
@@ -53,6 +54,7 @@ export const projects: Project[] = [
   },
   {
     slug: "credit-risk-engine",
+    image: "/projects/credit-risk-engine/assessments.jpg",
     title: "Credit Risk Engine",
     repositoryUrl: "https://github.com/youngnicoJava/credit-risk-engine",
     category: "Credit risk",
@@ -70,6 +72,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fraud-detection-engine",
+    image: "/projects/fraud-detection-engine/cases.jpg",
     title: "Fraud Detection Engine",
     repositoryUrl: "https://github.com/youngnicoJava/fraud-detection-engine",
     category: "Fraud detection",
