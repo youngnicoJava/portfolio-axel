@@ -2,7 +2,6 @@ import { useLanguage } from "../hooks/useLanguage";
 import {
   ArrowDown,
   ArrowUpRight,
-  Code2,
   Copy,
   Phone,
   MapPin,
@@ -77,16 +76,9 @@ export default function Home({
             </span>
           </div>
         </div>
-        <div className="portrait-composition">
+        <div className="portrait-composition round-portrait">
           <div className="portrait-frame has-photo">
             <img className="portrait-photo" src={profile.photo} alt={profile.name} width={1200} height={1600} decoding="async" />
-            <span className="portrait-top">
-              {t("THE PERSON BEHIND THE CODE")}
-            </span>
-            <div className="portrait-bottom">
-              <span>Axel Fecha</span>
-              <Code2 size={20} />
-            </div>
           </div>
           <span className="portrait-coordinate">
             {t("A human approach to software.")}

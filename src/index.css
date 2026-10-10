@@ -1772,3 +1772,11 @@ p {
 .portrait-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .portrait-frame.has-photo::before { z-index: 1; background: linear-gradient(to bottom, rgba(0,0,0,.28), transparent 30%, transparent 65%, rgba(0,0,0,.6)); pointer-events: none; }
 .has-photo .portrait-top, .has-photo .portrait-bottom { z-index: 2; color: #fff; opacity: 1; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+
+/* Compact circular portrait, independent from project interactions. */
+.round-portrait { width: 240px; padding: 0; justify-self: center; }
+.round-portrait .portrait-frame { width: 220px; height: 220px; padding: 0; border-radius: 50%; margin-inline: auto; }
+.round-portrait .portrait-frame::before { display: none; }
+.round-portrait .portrait-photo { object-position: 50% 38%; }
+.round-portrait .portrait-mark { display: none; }
+@media (max-width: 600px) { .round-portrait { width: 100%; justify-self: stretch; gap: 18px; } .round-portrait .portrait-frame { width: 104px; height: 104px; margin: 0; } }
