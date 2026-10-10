@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+.git
+.github
+.codex
+.agents
+.vscode
+.idea
+github-profile
+.env
+.env.*
+*.log
