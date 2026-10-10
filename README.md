@@ -1,25 +1,9 @@
 
 # Axel Fecha — Software Developer
 
-Portfolio personal con React, TypeScript estricto, Vite, React Router, CSS y Lucide.
+Primera iteración visual del portfolio. React, TypeScript estricto, Vite, React Router, CSS y Lucide. No se ha desplegado.
 
-## Ejecutar con Docker
-
-Requiere Docker con Compose. Node y npm se utilizan dentro del contenedor; no hace falta instalarlos en la máquina ni utilizar Bun.
-
-```sh
-docker compose up --build -d
-```
-
-Abrir http://localhost:8080. El build de producción se sirve con Nginx y soporta rutas como `/projects/fixy`, imágenes y videos. Para aplicar cambios, repetir el comando anterior.
-
-```sh
-docker compose down
-```
-
-El Dockerfile usa dos etapas: Node 24 para compilar y Nginx para servir únicamente el resultado. Vercel continúa usando el build de Vite y `vercel.json`.
-
-## Desarrollo sin Docker
+## Ejecutar
 
 Node.js 22.12+ o 24 recomendado.
 
