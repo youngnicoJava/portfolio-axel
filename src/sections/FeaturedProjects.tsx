@@ -1,6 +1,12 @@
 import { useLanguage } from "../hooks/useLanguage";
-import { useRef } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Play } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+  ArrowUpRight,
+  Play,
+} from "lucide-react";
 import { Github } from "../components/BrandIcons";
 import { Link } from "react-router-dom";
 import { useProjects } from "../hooks/useLanguage";
@@ -15,7 +21,12 @@ export function FeaturedProjects({
   const { t } = useLanguage();
   const track = useRef<HTMLDivElement>(null);
   const projects = useProjects();
-  function move(direction: number) {
+  const section = useRef<HTMLElement>(null);
+  const pulseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+  const [pulse, setPulse] = useState<"left" | "right" | null>(null);
+  const move = useCallback((direction: number) => {
     const element = track.current;
     const card = element?.querySelector("article");
     if (element && card)
@@ -25,9 +36,48 @@ export function FeaturedProjects({
           ? "instant"
           : "smooth",
       });
-  }
+  }, []);
+  useEffect(() => {
+    function onKeyDown(event: KeyboardEvent) {
+      const key = event.key.toLowerCase();
+      if (
+        (key !== "q" && key !== "e") ||
+        event.repeat ||
+        event.ctrlKey ||
+        event.altKey ||
+        event.metaKey
+      )
+        return;
+      const target = event.target;
+      if (
+        target instanceof HTMLElement &&
+        target.closest(
+          'input, textarea, select, [contenteditable]:not([contenteditable="false"]), [role="textbox"]',
+        )
+      )
+        return;
+      if (document.querySelector('dialog[open], [aria-modal="true"]')) return;
+      const bounds = section.current?.getBoundingClientRect();
+      if (
+        !bounds ||
+        bounds.top >= innerHeight * 0.8 ||
+        bounds.bottom <= innerHeight * 0.2
+      )
+        return;
+      event.preventDefault();
+      move(key === "q" ? -1 : 1);
+      setPulse(key === "q" ? "left" : "right");
+      clearTimeout(pulseTimer.current);
+      pulseTimer.current = setTimeout(() => setPulse(null), 450);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      clearTimeout(pulseTimer.current);
+    };
+  }, [move]);
   return (
-    <section id="projects" className="section projects-section">
+    <section ref={section} id="projects" className="section projects-section">
       <div className="section-heading">
         <div>
           <span className="eyebrow">{t("01 / SELECTED WORK")}</span>
@@ -38,82 +88,100 @@ export function FeaturedProjects({
             )}
           </p>
         </div>
-        <div className="carousel-controls">
-          <button
-            className="icon-button"
-            aria-label={t("Previous projects")}
-            onClick={() => move(-1)}
-          >
-            <ArrowLeft size={19} />
-          </button>
-          <button
-            className="icon-button"
-            aria-label={t("Next projects")}
-            onClick={() => move(1)}
-          >
-            <ArrowRight size={19} />
-          </button>
-        </div>
       </div>
-      <div
-        className="project-track"
-        ref={track}
-        tabIndex={0}
-        aria-label={t("Featured projects, scroll horizontally for more")}
-      >
-        <div className="project-track-inner">
-          {projects.map((project, index) => (
-            <article className="project-card" key={project.slug}>
-              <ProjectPreview project={project} href={`/projects/${project.slug}`} />
-              <div className="project-meta">
-                <span>{project.category}</span>
-                <span>0{index + 1}</span>
-              </div>
-              <Link className="project-title" to={`/projects/${project.slug}`}>
-                <h3>{project.title}</h3>
-                <ArrowUpRight size={23} />
-              </Link>
-              <p>{project.shortDescription}</p>
-              <div className="tags">
-                {project.technologies.map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
-              <div className="project-actions">
-                {project.liveDemoUrl && (
-                  <ProfessionalLink href={project.liveDemoUrl} className="button secondary">
-                    {t("Interactive demo")}
-                  </ProfessionalLink>
-                )}
-                {project.demoRepositoryUrl && (
-                  <ProfessionalLink href={project.demoRepositoryUrl} className="text-button">
-                    <Github size={16} /> {t("Demo source")}
-                  </ProfessionalLink>
-                )}
-                <button
-                  className="button demo-button"
-                  onClick={() => onDemo(project)}
+      <div className="project-carousel">
+        <button
+          type="button"
+          className={`project-nav left ${pulse === "left" ? "key-pulse" : ""}`}
+          aria-label={t("Previous projects")}
+          aria-keyshortcuts="Q"
+          onClick={() => move(-1)}
+        >
+          <ChevronLeft size={20} />
+          <kbd>Q</kbd>
+        </button>
+        <button
+          type="button"
+          className={`project-nav right ${pulse === "right" ? "key-pulse" : ""}`}
+          aria-label={t("Next projects")}
+          aria-keyshortcuts="E"
+          onClick={() => move(1)}
+        >
+          <ChevronRight size={20} />
+          <kbd>E</kbd>
+        </button>
+        <div
+          className="project-track"
+          ref={track}
+          tabIndex={0}
+          aria-label={t("Featured projects, scroll horizontally for more")}
+        >
+          <div className="project-track-inner">
+            {projects.map((project, index) => (
+              <article className="project-card" key={project.slug}>
+                <ProjectPreview
+                  project={project}
+                  href={`/projects/${project.slug}`}
+                />
+                <div className="project-meta">
+                  <span>{project.category}</span>
+                  <span>0{index + 1}</span>
+                </div>
+                <Link
+                  className="project-title"
+                  to={`/projects/${project.slug}`}
                 >
-                  <Play size={15} />
-                  {t("View demo")}
-                </button>
-                <ProfessionalLink
-                  href={project.repositoryUrl}
-                  className="text-button"
-                >
-                  <Github size={16} /> GitHub
-                </ProfessionalLink>
-                {project.videoUrl && (
+                  <h3>{project.title}</h3>
+                  <ArrowUpRight size={23} />
+                </Link>
+                <p>{project.shortDescription}</p>
+                <div className="tags">
+                  {project.technologies.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+                <div className="project-actions">
+                  {project.liveDemoUrl && (
+                    <ProfessionalLink
+                      href={project.liveDemoUrl}
+                      className="button secondary"
+                    >
+                      {t("Interactive demo")}
+                    </ProfessionalLink>
+                  )}
+                  {project.demoRepositoryUrl && (
+                    <ProfessionalLink
+                      href={project.demoRepositoryUrl}
+                      className="text-button"
+                    >
+                      <Github size={16} /> {t("Demo source")}
+                    </ProfessionalLink>
+                  )}
+                  <button
+                    className="button demo-button"
+                    onClick={() => onDemo(project)}
+                  >
+                    <Play size={15} />
+                    {t("View demo")}
+                  </button>
                   <ProfessionalLink
-                    href={project.videoUrl}
+                    href={project.repositoryUrl}
                     className="text-button"
                   >
-                    {t("Watch walkthrough")}
+                    <Github size={16} /> GitHub
                   </ProfessionalLink>
-                )}
-              </div>
-            </article>
-          ))}
+                  {project.videoUrl && (
+                    <ProfessionalLink
+                      href={project.videoUrl}
+                      className="text-button"
+                    >
+                      {t("Watch walkthrough")}
+                    </ProfessionalLink>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
       <div className="project-footnote">

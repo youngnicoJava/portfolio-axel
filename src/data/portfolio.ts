@@ -15,7 +15,7 @@ export const projects: Project[] = [
     screenshots: [
       { src: "/projects/fixy/fixy-home.png", label: "Home" },
       { src: "/projects/fixy/worker-dashboard.png", label: "Worker dashboard" },
-      { src: "/projects/fixy/service-offering.png", label: "Professional service" },
+      { src: "/projects/fixy/address-modal.jpg", label: "Address selection" },
       { src: "/projects/fixy/service-agreement.png", label: "Service agreement" },
     ],
     liveDemoUrl: "https://youngnicoJava.github.io/fixy-demo-frontend/",
