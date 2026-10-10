@@ -13,34 +13,10 @@ export const projects: Project[] = [
   {
     slug: "fixy",
     screenshots: [
-      {
-        src: "/projects/fixy/fixy-home.png",
-        label: "Home",
-      },
-      {
-        src: "/projects/fixy/auth-login.jpg",
-        label: "Authentication",
-      },
-      {
-        src: "/projects/fixy/client-dashboard.jpg",
-        label: "Client dashboard",
-      },
-      {
-        src: "/projects/fixy/worker-dashboard.jpg",
-        label: "Worker dashboard",
-      },
-      {
-        src: "/projects/fixy/address-modal.jpg",
-        label: "Address selection",
-      },
-      {
-        src: "/projects/fixy/request-matched-agreement.jpg",
-        label: "Service agreement",
-      },
-      {
-        src: "/projects/fixy/conversation-contract.jpg",
-        label: "Conversation and agreement",
-      },
+      { src: "/projects/fixy/fixy-home.png", label: "Home" },
+      { src: "/projects/fixy/worker-dashboard.png", label: "Worker dashboard" },
+      { src: "/projects/fixy/service-offering.png", label: "Professional service" },
+      { src: "/projects/fixy/service-agreement.png", label: "Service agreement" },
     ],
     liveDemoUrl: "https://youngnicoJava.github.io/fixy-demo-frontend/",
     demoRepositoryUrl: "https://github.com/youngnicoJava/fixy-demo-frontend",
@@ -66,34 +42,10 @@ export const projects: Project[] = [
   {
     slug: "loan-origination",
     screenshots: [
-      {
-        src: "/projects/loan-origination/customer-dashboard.jpg",
-        label: "Customer dashboard",
-      },
-      {
-        src: "/projects/loan-origination/keycloak.jpg",
-        label: "Authentication",
-      },
-      {
-        src: "/projects/loan-origination/application-approved.jpg",
-        label: "Approved application",
-      },
-      {
-        src: "/projects/loan-origination/operations-dashboard.jpg",
-        label: "Operations dashboard",
-      },
-      {
-        src: "/projects/loan-origination/offer-detail.jpg",
-        label: "Accepted offer",
-      },
-      {
-        src: "/projects/loan-origination/loan-active.jpg",
-        label: "Loan and repayment schedule",
-      },
-      {
-        src: "/projects/loan-origination/audit-events.jpg",
-        label: "Audit trail",
-      },
+      { src: "/projects/loan-origination/customer-dashboard.jpg", label: "Customer dashboard" },
+      { src: "/projects/loan-origination/keycloak.jpg", label: "Authentication" },
+      { src: "/projects/loan-origination/operations-dashboard.jpg", label: "Operations dashboard" },
+      { src: "/projects/loan-origination/loan-active.jpg", label: "Loan and repayment schedule" },
     ],
     image: "/projects/loan-origination/customer-dashboard.jpg",
     title: "Loan Origination Platform",
@@ -115,30 +67,9 @@ export const projects: Project[] = [
   {
     slug: "credit-risk-engine",
     screenshots: [
-      {
-        src: "/projects/credit-risk-engine/assessments.jpg",
-        label: "Assessment history",
-      },
-      {
-        src: "/projects/credit-risk-engine/keycloak.jpg",
-        label: "Authentication",
-      },
-      {
-        src: "/projects/credit-risk-engine/assessment-approve.jpg",
-        label: "Approved assessment",
-      },
-      {
-        src: "/projects/credit-risk-engine/assessment-explanation.jpg",
-        label: "Score explanation",
-      },
-      {
-        src: "/projects/credit-risk-engine/assessment-refer.jpg",
-        label: "Manual review",
-      },
-      {
-        src: "/projects/credit-risk-engine/assessment-reject.jpg",
-        label: "Rejected assessment",
-      },
+      { src: "/projects/credit-risk-engine/assessment-approve.jpg", label: "Credit score and band" },
+      { src: "/projects/credit-risk-engine/assessments.jpg", label: "Assessment history" },
+      { src: "/projects/credit-risk-engine/assessment-explanation.jpg", label: "Score explanation" },
     ],
     image: "/projects/credit-risk-engine/assessments.jpg",
     title: "Credit Risk Engine",
@@ -160,30 +91,10 @@ export const projects: Project[] = [
   {
     slug: "fraud-detection-engine",
     screenshots: [
-      {
-        src: "/projects/fraud-detection-engine/cases.jpg",
-        label: "Investigation queue",
-      },
-      {
-        src: "/projects/fraud-detection-engine/keycloak.jpg",
-        label: "Authentication",
-      },
-      {
-        src: "/projects/fraud-detection-engine/assessments.jpg",
-        label: "Assessment history",
-      },
-      {
-        src: "/projects/fraud-detection-engine/assessment-review.jpg",
-        label: "Fraud signals",
-      },
-      {
-        src: "/projects/fraud-detection-engine/case-resolved.jpg",
-        label: "Case resolution",
-      },
-      {
-        src: "/projects/fraud-detection-engine/case-history.jpg",
-        label: "Investigation history",
-      },
+      { src: "/projects/fraud-detection-engine/assessment-pass.jpg", label: "No fraud signals: PASS" },
+      { src: "/projects/fraud-detection-engine/assessment-review.jpg", label: "Fraud signals: REVIEW" },
+      { src: "/projects/fraud-detection-engine/case-resolved.jpg", label: "Case resolution" },
+      { src: "/projects/fraud-detection-engine/assessments.jpg", label: "Assessment history" },
     ],
     image: "/projects/fraud-detection-engine/cases.jpg",
     title: "Fraud Detection Engine",

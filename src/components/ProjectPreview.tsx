@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../hooks/useLanguage";
 import {
-  ArrowLeft,
-  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   ArrowUpRight,
   Check,
   Search,
@@ -69,48 +69,32 @@ export function ProjectPreview({
           }
         }}
       >
-        {href ? (
-          <Link
-            className="project-gallery-link"
-            to={href}
-            aria-label={`${t("Explore")} ${project.title}`}
-          >
-            {viewport}
-          </Link>
-        ) : (
-          viewport
-        )}
+        <div className="project-gallery-frame">
+          {href ? (
+            <Link className="project-gallery-link" to={href} aria-label={`${t("Explore")} ${project.title}`}>
+              {viewport}
+            </Link>
+          ) : viewport}
+          {screenshots.length > 1 && (
+            <>
+              <button type="button" className="gallery-arrow left"
+                aria-label={`${t("Previous image")}: ${project.title}`} onClick={() => move(-1)}>
+                <ChevronLeft size={24} />
+              </button>
+              <button type="button" className="gallery-arrow right"
+                aria-label={`${t("Next image")}: ${project.title}`} onClick={() => move(1)}>
+                <ChevronRight size={24} />
+              </button>
+            </>
+          )}
+        </div>
         <div className="project-gallery-footer">
-          <span
-            className="project-gallery-caption"
-            aria-live="polite"
-            aria-atomic="true"
-          >
+          <span className="project-gallery-caption" aria-live="polite" aria-atomic="true">
             {t(screenshots[current].label)}
           </span>
-          {screenshots.length > 1 && (
-            <div className="project-gallery-controls">
-              <button
-                type="button"
-                className="gallery-arrow"
-                aria-label={`${t("Previous image")}: ${project.title}`}
-                onClick={() => move(-1)}
-              >
-                <ArrowLeft size={17} />
-              </button>
-              <span className="project-gallery-count" aria-hidden="true">
-                {current + 1} / {screenshots.length}
-              </span>
-              <button
-                type="button"
-                className="gallery-arrow"
-                aria-label={`${t("Next image")}: ${project.title}`}
-                onClick={() => move(1)}
-              >
-                <ArrowRight size={17} />
-              </button>
-            </div>
-          )}
+          <span className="project-gallery-count" aria-hidden="true">
+            {current + 1} / {screenshots.length}
+          </span>
         </div>
       </div>
     );

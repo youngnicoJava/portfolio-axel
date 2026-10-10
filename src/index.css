@@ -1720,45 +1720,26 @@ p {
   }
 }
 
-/* Real screenshots fill their frame; controls stay outside the image. */
-.project-preview.has-gallery {
-  aspect-ratio: auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-}
+/* Manual galleries: full screenshot with the same overlay controls as Fixy's hero. */
+.project-preview.has-gallery { aspect-ratio: auto; background: var(--surface); border: 1px solid var(--line); }
+.project-gallery-frame { position: relative; }
 .project-gallery-link { display: block; }
-.project-gallery-viewport {
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: #101820;
-}
-.project-gallery-track {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 250ms ease;
-}
+.project-gallery-viewport { aspect-ratio: 16 / 9; overflow: hidden; background: #101820; }
+.project-gallery-track { display: flex; width: 100%; height: 100%; transition: transform 250ms ease; }
 .project-gallery-slide { flex: 0 0 100%; min-width: 0; height: 100%; }
 .project-gallery-viewport .project-image { width: 100%; height: 100%; object-fit: contain; }
-.project-gallery-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-height: 64px;
-  padding: 8px 12px;
-}
+.project-gallery-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; padding: 8px 12px; }
 .project-gallery-caption { min-width: 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
-.project-gallery-controls { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .gallery-arrow {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
+  position: absolute; z-index: 2; top: 50%; transform: translateY(-50%);
+  display: flex; align-items: center; justify-content: center; width: 52px; height: 52px;
+  border: 1px solid rgba(255, 255, 255, .22); border-radius: 50%;
+  background: rgba(0, 0, 0, .18); color: #fff; cursor: pointer; backdrop-filter: blur(10px);
+  transition: background 180ms ease, transform 180ms ease;
 }
-.gallery-arrow:hover { background: var(--accent-soft); border-color: var(--accent); }
+.gallery-arrow:hover { background: rgba(0, 0, 0, .35); transform: translateY(-50%) scale(1.05); }
+.gallery-arrow.left { left: clamp(1rem, 2.5vw, 2rem); }
+.gallery-arrow.right { right: clamp(1rem, 2.5vw, 2rem); }
 .project-gallery-count { min-width: 38px; text-align: center; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--muted); }
+@media (max-width: 600px) { .gallery-arrow { width: 44px; height: 44px; } .gallery-arrow.left { left: 10px; } .gallery-arrow.right { right: 10px; } }
 @media (prefers-reduced-motion: reduce) { .project-gallery-track { transition: none; } }

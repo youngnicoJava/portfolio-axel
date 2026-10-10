@@ -1,4 +1,8 @@
 export const spanish: Record<string, string> = {
+  "Professional service": "Servicio del profesional",
+  "Credit score and band": "Score crediticio y banda",
+  "No fraud signals: PASS": "Sin señales de fraude: PASS",
+  "Fraud signals: REVIEW": "Señales de fraude: REVIEW",
   "Image gallery": "Galería de imágenes",
   "Previous image": "Imagen anterior",
   "Next image": "Imagen siguiente",
