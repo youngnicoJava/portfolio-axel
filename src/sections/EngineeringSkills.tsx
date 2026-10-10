@@ -32,8 +32,8 @@ export function EngineeringSkills() {
       <div className="section-heading">
         <div>
           <span className="eyebrow">{t("02 / ENGINEERING TOOLKIT")}</span>
-          <h2>{t("More than a stack.")}</h2>
-          <p>{t("Tools change. Clear thinking and solid foundations stay.")}</p>
+          <h2>{t("Technical skills")}</h2>
+          <p>{t("Languages, frameworks and tools I work with.")}</p>
         </div>
         <Code2 className="section-symbol" size={35} strokeWidth={1} />
       </div>

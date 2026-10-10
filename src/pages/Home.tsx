@@ -112,7 +112,7 @@ export default function Home({
       <section id="about" className="section about-section">
         <div>
           <span className="eyebrow">{t("03 / ABOUT ME")}</span>
-          <h2>{t("A little more about me.")}</h2>
+          <h2>{t("About")}</h2>
         </div>
         <div>
           <p className="about-lead">
@@ -139,12 +139,8 @@ export default function Home({
         <span className="eyebrow">{t("04 / LET’S CONNECT")}</span>
         <div className="contact-layout">
           <div>
-            <h2>
-              {t("Have something")}
-              <br />
-              {t("in mind?")}
-            </h2>
-            <p>{t("Let’s start with a conversation.")}</p>
+            <h2>{t("Contact")}</h2>
+            <p>{t("My contact details and professional profiles.")}</p>
           </div>
           <div className="contact-links">
             <div className="email-row">

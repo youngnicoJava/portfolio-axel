@@ -31,10 +31,7 @@ export function FeaturedProjects({
       <div className="section-heading">
         <div>
           <span className="eyebrow">{t("01 / SELECTED WORK")}</span>
-          <h2>
-            {t("Built to solve.")}
-            <br className="mobile-break" /> {t("Designed to work.")}
-          </h2>
+          <h2>{t("Projects")}</h2>
           <p>
             {t(
               "A selection of applications, systems, and the thinking behind them.",

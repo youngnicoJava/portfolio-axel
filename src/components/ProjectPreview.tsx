@@ -5,14 +5,17 @@ export function ProjectPreview({ project }: { project: Project }) {
   const { t } = useLanguage();
   if (project.image)
     return (
-      <img
-        className="project-image"
-        src={project.image}
-        alt={`${project.title} ${t("screenshot")}`}
-        loading="lazy"
-        width="900"
-        height="560"
-      />
+      <div className={`project-preview ${project.accent}`}>
+        <div className="mock-window screenshot-window">
+          <img
+            className="project-image"
+            src={project.image}
+            alt={`${project.title} ${t("screenshot")}`}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
     );
   return (
     <div

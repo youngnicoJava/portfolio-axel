@@ -7,6 +7,8 @@ export interface Project {
   technologies: string[];
   image?: string;
   demoGif?: string;
+  demoVideo?: string;
+  demoPlaybackRate?: number;
   videoUrl?: string;
   repositoryUrl?: string;
   liveDemoUrl?: string;

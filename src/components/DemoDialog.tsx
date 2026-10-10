@@ -12,14 +12,14 @@ export default function DemoDialog({
 }) {
   const { t } = useLanguage();
   const dialog = useRef<HTMLDialogElement>(null);
-  const [playGif, setPlayGif] = useState(
+  const [playDemo, setPlayDemo] = useState(
     () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const [loadFailed, setLoadFailed] = useState(false);
   useEffect(() => {
     const query = matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => {
-      if (query.matches) setPlayGif(false);
+      if (query.matches) setPlayDemo(false);
     };
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
@@ -59,7 +59,27 @@ export default function DemoDialog({
           <X />
         </button>
       </div>
-      {project.demoGif && playGif ? (
+      {project.demoVideo && playDemo ? (
+        <video
+          className="demo-image"
+          src={project.demoVideo}
+          poster={project.image}
+          controls
+          playsInline
+          autoPlay
+          muted
+          preload="metadata"
+          aria-label={`${project.title} ${t("quick demo")}`}
+          onLoadedMetadata={(event) => {
+            event.currentTarget.defaultPlaybackRate = project.demoPlaybackRate ?? 1;
+            event.currentTarget.playbackRate = project.demoPlaybackRate ?? 1;
+          }}
+          onError={() => {
+            setLoadFailed(true);
+            setPlayDemo(false);
+          }}
+        />
+      ) : project.demoGif && playDemo ? (
         <img
           className="demo-image"
           src={project.demoGif}
@@ -67,23 +87,23 @@ export default function DemoDialog({
           onError={(event) => {
             event.currentTarget.hidden = true;
             setLoadFailed(true);
-            setPlayGif(false);
+            setPlayDemo(false);
           }}
         />
       ) : (
         <ProjectPreview project={project} />
       )}
       <div className="dialog-caption">
-        {project.demoGif ? (
+        {project.demoGif || project.demoVideo ? (
           <button
             className="text-button"
             onClick={() => {
               setLoadFailed(false);
-              setPlayGif(!playGif);
+              setPlayDemo(!playDemo);
             }}
           >
-            {playGif ? <Pause size={16} /> : <Play size={16} />}
-            {playGif ? t("Stop demo") : t("Play demo")}
+            {playDemo ? <Pause size={16} /> : <Play size={16} />}
+            {playDemo ? t("Stop demo") : t("Play demo")}
           </button>
         ) : (
           <p>

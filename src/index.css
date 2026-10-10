@@ -545,8 +545,7 @@ p {
   scroll-snap-align: start;
   min-width: 0;
 }
-.project-preview,
-.project-image {
+.project-preview {
   position: relative;
   width: 100%;
   aspect-ratio: 1.65;
@@ -554,7 +553,18 @@ p {
   overflow: hidden;
   background: #dce6ce;
   display: block;
-  object-fit: cover;
+}
+.project-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mock-window.screenshot-window {
+  width: 93%;
+  left: 3.5%;
+  height: auto;
+  top: 12%;
+  border-radius: 8px;
 }
 .project-preview.lavender {
   background: #e1dff0;

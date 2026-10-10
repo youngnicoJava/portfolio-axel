@@ -18,13 +18,19 @@ try {
   const { profile } = await server.ssrLoadModule('/src/data/portfolio.ts');
   const { useTheme } = await server.ssrLoadModule('/src/hooks/useTheme.ts');
   const { projects } = await server.ssrLoadModule('/src/data/portfolio.ts');
-  const project = { ...projects[0], demoGif: '/test-demo.gif' };
+  const project = { ...projects[0], demoVideo: undefined, demoGif: '/test-demo.gif' };
   const withLanguage = child => renderToStaticMarkup(createElement(LanguageProvider, null, child));
   const demo = () => withLanguage(createElement(DemoDialog, { project, onClose() {} }));
   assert(!demo().includes('src="/test-demo.gif"'), 'Reduced motion must not autoplay GIF');
   assert(demo().includes('Reproducir demo'), 'Demo stays available under reduced motion');
   reduced = false;
   assert(demo().includes('src="/test-demo.gif"'), 'Requested demo loads GIF with normal motion');
+  const videoDemo = () => withLanguage(createElement(DemoDialog, { project: projects[0], onClose() {} }));
+  assert(videoDemo().includes('<video'), 'Fixy supports an MP4 quick demo');
+  assert.equal(projects[0].demoPlaybackRate, 1.5);
+  reduced = true;
+  assert(!videoDemo().includes('<video'), 'Reduced motion waits for explicit video playback');
+  reduced = false;
   function ThemeProbe() { return createElement('span', null, useTheme().theme); }
   const theme = () => renderToStaticMarkup(createElement(ThemeProbe));
   assert.equal(theme(), '<span>dark</span>');

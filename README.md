@@ -32,7 +32,7 @@ Para habilitar el CV: colocar el PDF en `public/cv.pdf` y configurar `profile.cv
 - `src/data/portfolio.ts`: perfil, links, CV, proyectos y grupos de habilidades. Las URLs ausentes se muestran como texto sin enlaces falsos ni avisos visuales.
 
 Flyway, Excel y Power BI usan SVG de [Simple Icons 9.21.0](https://github.com/simple-icons/simple-icons/tree/9.21.0), con licencia en `public/icons/skills/SIMPLE-ICONS-LICENSE.txt`.
-- `src/types/project.ts`: modelo reutilizable. Agregar `image`, `demoGif`, `repositoryUrl` y opcionalmente `videoUrl`. Archivos locales en `public/`, referenciados como `/projects/fixy/demo.gif`.
+- `src/types/project.ts`: modelo reutilizable. Agregar `image`, `demoGif` o `demoVideo` (MP4), `repositoryUrl` y opcionalmente `videoUrl` para el walkthrough. `demoPlaybackRate` controla la velocidad de la demo (Fixy: 1.5). Archivos locales en `public/`, referenciados como `/projects/fixy/video-fixy.mp4`. El video solo se monta al solicitar la demo; con reduced motion requiere pulsar Reproducir.
 - `src/pages/Home.tsx`: presentación y fotografía placeholder. Reemplazar el placeholder por una imagen optimizada con dimensiones explícitas.
 - `src/styles` no es necesario por ahora: los tokens y breakpoints compartidos están en `src/index.css`; los componentes pueden incorporar estilos propios después.
 - Las maquetas de proyectos y los stacks son ilustrativos; no describen implementaciones confirmadas. Revisar todo el contenido antes de publicar.
