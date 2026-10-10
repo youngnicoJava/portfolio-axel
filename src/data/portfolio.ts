@@ -2,6 +2,7 @@ import type { Project } from "../types/project";
 // Draft data: replace before publishing.
 export const profile = {
   name: "Axel Fecha",
+  photo: "/profile/axel-fecha.jpeg",
   email: "axel.fecha.cit@gmail.com",
   phone: "+54 9 11 2462-2692",
   location: "GBA Norte, Buenos Aires, Argentina",

@@ -6,7 +6,6 @@ import {
   Copy,
   Phone,
   MapPin,
-  UserRound,
 } from "lucide-react";
 import { Github, Linkedin } from "../components/BrandIcons";
 import { profile } from "../data/portfolio";
@@ -79,14 +78,11 @@ export default function Home({
           </div>
         </div>
         <div className="portrait-composition">
-          <div className="portrait-frame">
+          <div className="portrait-frame has-photo">
+            <img className="portrait-photo" src={profile.photo} alt={profile.name} width={1200} height={1600} decoding="async" />
             <span className="portrait-top">
               {t("THE PERSON BEHIND THE CODE")}
             </span>
-            <div className="portrait-placeholder">
-              <UserRound strokeWidth={0.7} />
-              <span>{t("Personal photo")}</span>
-            </div>
             <div className="portrait-bottom">
               <span>Axel Fecha</span>
               <Code2 size={20} />
