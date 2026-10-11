@@ -46,14 +46,14 @@ try {
       "Foreign or malformed drag payloads must not select a project",
     );
   }
-  const render = (selectedProject) =>
+  const render = (selectedProject, draggingProject = null) =>
     renderToStaticMarkup(
       createElement(
         LanguageProvider,
         null,
         createElement(EngineeringSkills, {
           selectedProject,
-          draggingProject: null,
+          draggingProject,
           onSelectStack() {},
           onClear() {},
         }),
@@ -81,7 +81,12 @@ try {
   assert.match(loan, /Flyway — Utilizado en Loan Origination Platform/);
   assert(!loan.includes("Angular — Utilizado en Loan Origination Platform"));
   assert(!loan.includes("Go — Utilizado en Loan Origination Platform"));
+  const dragging = render(null, "fixy");
+  assert(dragging.includes("awaiting-project"));
+  assert(dragging.includes("skills-drop-label"));
+  assert(dragging.includes("Soltá aquí"));
   const empty = render(null);
+  assert(!empty.includes("skills-drop-label"));
   assert(!empty.includes('class="skill-check"'));
   assert(!empty.includes("Limpiar selección"));
   console.log(

@@ -1,4 +1,7 @@
 export const spanish: Record<string, string> = {
+  "Drag and drop here": "Arrastrá y soltá aquí",
+  "Explore the project’s technologies": "Descubrí las tecnologías del proyecto",
+  "Drop here": "Soltá aquí",
   "GitHub repository": "Repositorio GitHub",
   "Demo open-source": "Demo open-source",
   "Thanks for visiting my portfolio.": "Gracias por visitar mi portfolio.",

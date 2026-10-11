@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Wrench, Code2, Check, X } from "lucide-react";
+import { Wrench, Code2, Check, X, MousePointer2 } from "lucide-react";
 import { additionalSkills, skillGroups } from "../data/portfolio";
 import { SkillIcon } from "../components/SkillIcon";
 import { useLanguage } from "../hooks/useLanguage";
@@ -120,6 +120,12 @@ export function EngineeringSkills({
         if (project) onSelectStack(project.slug);
       }}
     >
+      {draggingProject && (
+        <div className="skills-drop-label" aria-hidden="true">
+          <MousePointer2 size={15} strokeWidth={1.5} />
+          {t("Drop here")}
+        </div>
+      )}
       <div className="section-heading">
         <div>
           <span className="eyebrow">{t("02 / ENGINEERING TOOLKIT")}</span>

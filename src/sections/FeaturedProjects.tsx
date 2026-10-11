@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
   Play,
   GripVertical,
+  ArrowDown,
 } from "lucide-react";
 import { Github } from "../components/BrandIcons";
 import { Link } from "react-router-dom";
@@ -35,6 +36,8 @@ export function FeaturedProjects({
   const pulseTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+  const [previewStack, setPreviewStack] = useState<string | null>(null);
+  const showDropGuide = Boolean(draggingProject || previewStack);
   const [pulse, setPulse] = useState<"left" | "right" | null>(null);
   const move = useCallback((direction: number) => {
     const element = track.current;
@@ -100,7 +103,9 @@ export function FeaturedProjects({
           </p>
         </div>
       </div>
-      <div className="project-carousel">
+      <div
+        className={`project-carousel ${showDropGuide ? "show-drop-guide" : ""}`}
+      >
         <button
           type="button"
           className={`project-nav left ${pulse === "left" ? "key-pulse" : ""}`}
@@ -170,7 +175,14 @@ export function FeaturedProjects({
                     aria-label={`${t("View technologies")}: ${project.title}`}
                     aria-pressed={selectedStack === project.slug}
                     title={t("Drag to skills or click to view the stack")}
-                    onClick={() => onSelectStack(project.slug)}
+                    onMouseEnter={() => setPreviewStack(project.slug)}
+                    onMouseLeave={() => setPreviewStack(null)}
+                    onFocus={() => setPreviewStack(project.slug)}
+                    onBlur={() => setPreviewStack(null)}
+                    onClick={() => {
+                      setPreviewStack(null);
+                      onSelectStack(project.slug);
+                    }}
                     onDragStart={(event) => {
                       event.dataTransfer.setData(
                         PROJECT_DRAG_TYPE,
@@ -228,6 +240,15 @@ export function FeaturedProjects({
             ))}
           </div>
         </div>
+      </div>
+      <div
+        className="project-drag-guide"
+        data-visible={showDropGuide}
+        aria-hidden={!showDropGuide}
+      >
+        <span>{t("Drag and drop here")}</span>
+        <small>{t("Explore the project’s technologies")}</small>
+        <ArrowDown size={23} strokeWidth={1.5} aria-hidden="true" />
       </div>
       <div className="project-footnote">
         <span>{t("04 projects · Draft content")}</span>
