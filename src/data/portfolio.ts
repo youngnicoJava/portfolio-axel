@@ -21,6 +21,7 @@ export const projects: Project[] = [
       "TypeScript",
       "PostgreSQL",
       "Kafka",
+      "Docker",
       "Go",
       "SQL",
       "Layered architecture",
@@ -48,7 +49,16 @@ export const projects: Project[] = [
       "Connecting everyday problems with the right professionals.",
     description:
       "A service platform concept bringing requests, professionals and follow-up into one clear experience. This is placeholder project information.",
-    technologies: ["Angular", "TypeScript", "Spring Boot", "PostgreSQL"],
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "Java",
+      "Spring Boot",
+      "Go",
+      "PostgreSQL",
+      "Kafka",
+      "Docker",
+    ],
     highlights: [
       "Discover a professional",
       "Manage service requests",
@@ -98,7 +108,15 @@ export const projects: Project[] = [
       "From loan application to disbursement, with a traceable financial workflow.",
     description:
       "A modular loan origination platform covering customers, applications, evaluations, offers, loans, disbursements and installments. A hexagonal domain, role-based access, audit records and transactional outbox keep the financial workflow traceable.",
-    technologies: ["Java", "Quarkus", "PostgreSQL", "React", "TypeScript"],
+    technologies: [
+      "Java",
+      "Quarkus",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "Kafka",
+      "Docker",
+    ],
     highlights: [
       "Applications, evaluations and loan offers",
       "Disbursements and installment tracking",
@@ -144,7 +162,15 @@ export const projects: Project[] = [
       "Explainable credit decisions based on eligibility, affordability and scoring.",
     description:
       "An independent credit risk service with versioned policies and a framework-free hexagonal domain. It returns approval, review or rejection with reasons and score evidence. An analyst console explains assessments, while Kafka connects the service to loan origination.",
-    technologies: ["Java", "Quarkus", "PostgreSQL", "Kafka", "React"],
+    technologies: [
+      "Java",
+      "Quarkus",
+      "PostgreSQL",
+      "Kafka",
+      "React",
+      "TypeScript",
+      "Docker",
+    ],
     highlights: [
       "Eligibility, affordability and versioned scoring",
       "Decision explanations and score factors",
@@ -194,7 +220,15 @@ export const projects: Project[] = [
       "Rule-based fraud signals with an investigation queue for analysts.",
     description:
       "An independent service that evaluates suspicious loan application behavior using deterministic rules. Its modular layered architecture supports explained assessments and manual case investigation. Case resolutions are published through a transactional outbox and versioned Kafka events; loan origination retains ownership of credit decisions.",
-    technologies: ["Java", "Quarkus", "PostgreSQL", "Kafka", "React"],
+    technologies: [
+      "Java",
+      "Quarkus",
+      "PostgreSQL",
+      "Kafka",
+      "React",
+      "TypeScript",
+      "Docker",
+    ],
     highlights: [
       "Application velocity and financial-change signals",
       "Manual investigation and case resolution",

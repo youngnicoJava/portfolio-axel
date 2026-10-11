@@ -160,7 +160,7 @@ function Portfolio() {
           <span className="brand-dot">.</span>
         </Link>
         <span>© {new Date().getFullYear()} Axel Fecha</span>
-        <span>{t("Built with intention.")}</span>
+        <span>{t("Thanks for visiting my portfolio.")}</span>
         <a className="back-to-top" href="#main-content">
           {t("Back to top ↑")}
         </a>

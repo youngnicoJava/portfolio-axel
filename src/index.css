@@ -1777,7 +1777,7 @@ p {
 .round-portrait { width: 240px; padding: 0; justify-self: center; }
 .round-portrait .portrait-frame { width: 220px; height: 220px; padding: 0; border-radius: 50%; margin-inline: auto; }
 .round-portrait .portrait-frame::before { display: none; }
-.round-portrait .portrait-photo { object-position: 50% 38%; }
+.round-portrait .portrait-photo { object-position: 50% 55%; transform: translateX(-7%) scale(1.18); }
 .round-portrait .portrait-mark { display: none; }
 @media (max-width: 600px) { .round-portrait { width: 100%; justify-self: stretch; gap: 18px; } .round-portrait .portrait-frame { width: 104px; height: 104px; margin: 0; } }
 
@@ -1795,8 +1795,11 @@ p {
 .stack-selection strong { color: var(--text); }
 .stack-selection button { flex-shrink: 0; font-size: 11px; }
 .skill-marker { position: relative; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.skill-used .skill-marker::before { content: ''; position: absolute; inset: -4px; border: 1.5px solid #58b87b; border-radius: 50%; animation: stack-ring-in 300ms ease-out; }
-.skill-check { position: absolute; right: -7px; top: -7px; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; background: #58b87b; color: #102a19; box-shadow: 0 0 0 2px var(--surface); animation: stack-check-in 400ms cubic-bezier(.2,.9,.3,1.4); }
-@keyframes stack-ring-in { from { opacity: 0; transform: scale(.75); } to { opacity: 1; transform: scale(1); } }
+.skill-ring { position: absolute; inset: -5px; width: 36px; height: 36px; fill: none; stroke: #58b87b; stroke-width: 1.7; stroke-linecap: round; transform: rotate(-90deg); pointer-events: none; }
+.skill-ring circle { stroke-dasharray: 1; stroke-dashoffset: 0; animation: stack-ring-draw 650ms ease-out both; }
+.skill-check { position: absolute; right: -7px; top: -7px; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; background: #58b87b; color: #102a19; box-shadow: 0 0 0 2px var(--surface); animation: stack-check-in 350ms 500ms cubic-bezier(.2,.9,.3,1.4) both; }
+@keyframes stack-ring-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes stack-check-in { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: scale(1); } }
 @media (max-width: 600px) { .stack-selection { align-items: flex-start; flex-direction: column; gap: 8px; } .project-footnote { gap: 12px; flex-wrap: wrap; } .project-footnote > span:last-child { max-width: 240px; line-height: 1.6; } }
+
+.project-source-divider { margin-inline: 6px; opacity: .5; }

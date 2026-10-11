@@ -26,6 +26,8 @@ try {
   ]);
   for (const project of projects) {
     assert.equal(resolveStackProject(project.slug).slug, project.slug);
+    for (const skill of ["Kafka", "Docker", "TypeScript"])
+      assert(project.technologies.includes(skill));
     assert(
       getStackSkills(project).every((skill) => knownSkills.has(skill)),
       "Every project skill must map to a visible skill",
@@ -60,6 +62,14 @@ try {
   const fixy = render(resolveStackProject("fixy"));
   assert.match(fixy, /aria-label="Angular — Utilizado en Fixy"/);
   assert.match(fixy, /aria-label="Go — Utilizado en Fixy"/);
+  assert.match(fixy, /aria-label="Docker — Utilizado en Fixy"/);
+  assert.match(fixy, /pathLength="1"/);
+  assert.equal(
+    (fixy.match(/class="skill-ring"/g) ?? []).length,
+    getStackSkills(resolveStackProject("fixy")).length,
+  );
+  for (const skill of ["Java", "Go"])
+    assert(resolveStackProject("fixy").technologies.includes(skill));
   assert(!fixy.includes("React — Utilizado en Fixy"));
   assert(!fixy.includes("Quarkus — Utilizado en Fixy"));
   assert.equal(

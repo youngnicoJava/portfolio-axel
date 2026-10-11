@@ -78,16 +78,22 @@ export default function ProjectPage({
         </div>
       </div>
       <div className="project-actions">
-                {project.liveDemoUrl && (
-                  <ProfessionalLink href={project.liveDemoUrl} className="button secondary">
-                    {t("Interactive demo")}
-                  </ProfessionalLink>
-                )}
-                {project.demoRepositoryUrl && (
-                  <ProfessionalLink href={project.demoRepositoryUrl} className="text-button">
-                    <Github size={16} /> {t("Demo source")}
-                  </ProfessionalLink>
-                )}
+        {project.liveDemoUrl && (
+          <ProfessionalLink
+            href={project.liveDemoUrl}
+            className="button secondary"
+          >
+            {t("Interactive demo")}
+          </ProfessionalLink>
+        )}
+        {project.demoRepositoryUrl && (
+          <ProfessionalLink
+            href={project.demoRepositoryUrl}
+            className="text-button"
+          >
+            <Github size={16} /> {t("GitHub repository")}
+          </ProfessionalLink>
+        )}
         <button className="button primary" onClick={() => onDemo(project)}>
           <Play size={16} />
           {t("View demo")}
@@ -97,7 +103,7 @@ export default function ProjectPage({
           href={project.repositoryUrl}
         >
           <Github size={16} />
-          {t("View repository")}
+          {t("GitHub repository")}
         </ProfessionalLink>
         {project.videoUrl && (
           <ProfessionalLink className="text-button" href={project.videoUrl}>

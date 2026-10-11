@@ -1,4 +1,11 @@
 export const spanish: Record<string, string> = {
+  "GitHub repository": "Repositorio GitHub",
+  "Demo open-source": "Demo open-source",
+  "Thanks for visiting my portfolio.": "Gracias por visitar mi portfolio.",
+  "I’m Axel Fecha, a software developer born in Buenos Aires. At eight, I built my first computer with my father. Since then, I’ve been passionate about software and computers, and soon afterwards I knew I wanted to make this my career.":
+    "Soy Axel Fecha, desarrollador de software nacido en Buenos Aires. A los 8 años armé mi primera computadora con mi padre. Desde entonces me apasionan el software y las computadoras, poco después ya sabía que quería dedicarme a esto.",
+  "I think about everything we could still simplify with software: the tasks that take up our time every day and could be handled more efficiently. I’m excited about what’s ahead, and I want to be there, helping make it happen.":
+    "Pienso en todo lo que todavía podríamos simplificar con software, en las tareas que nos consumen tiempo todos los días y que podrían resolverse con mayor eficiencia. Me entusiasma lo que viene y quiero estar en el lugar de los hechos, ser parte de quienes lo hagan posible.",
   "View technologies": "Ver tecnologías",
   "Drag to skills or click to view the stack":
     "Arrastrá hacia Skills o hacé clic para ver el stack",

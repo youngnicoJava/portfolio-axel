@@ -20,11 +20,13 @@ export default function Home({
 }) {
   const { t } = useLanguage();
   const [selectedStack, setSelectedStack] = useState<Project | null>(null);
+  const [selectionVersion, setSelectionVersion] = useState(0);
   const [draggingProject, setDraggingProject] = useState<string | null>(null);
   function selectStack(slug: string) {
     const project = resolveStackProject(slug);
     if (!project) return;
     setSelectedStack(project);
+    setSelectionVersion((version) => version + 1);
     const skills = document.getElementById("skills");
     skills?.focus({ preventScroll: true });
     skills?.scrollIntoView({
@@ -122,6 +124,7 @@ export default function Home({
       />
       <EngineeringSkills
         selectedProject={selectedStack}
+        selectionVersion={selectionVersion}
         draggingProject={draggingProject}
         onSelectStack={selectStack}
         onClear={() => setSelectedStack(null)}
@@ -132,24 +135,16 @@ export default function Home({
           <h2>{t("About")}</h2>
         </div>
         <div>
-          <p className="about-lead">
-            {t("Clear systems. Intentional decisions.")}
-            <br />
-            {t("Room for the people who use them.")}
-          </p>
           <p className="muted">
             {t(
-              "I’m Axel Fecha, a software developer based in Argentina. This portfolio brings together my projects and the technologies I work with.",
+              "I’m Axel Fecha, a software developer born in Buenos Aires. At eight, I built my first computer with my father. Since then, I’ve been passionate about software and computers, and soon afterwards I knew I wanted to make this my career.",
             )}
           </p>
           <p className="muted biography-detail">
             {t(
-              "This biography will soon include my professional background, my role in each project, and the types of challenges I want to take on next.",
+              "I think about everything we could still simplify with software: the tasks that take up our time every day and could be handled more efficiently. I’m excited about what’s ahead, and I want to be there, helping make it happen.",
             )}
           </p>
-          <span className="draft-note">
-            {t("Biography draft · Professional background to be added")}
-          </span>
         </div>
       </section>
       <section id="contact" className="section contact-section">
@@ -184,9 +179,6 @@ export default function Home({
               </ProfessionalLink>
               <ResumeLinks compact />
             </div>
-            <span className="draft-note">
-              {t("Placeholder email · Replace before publishing")}
-            </span>
           </div>
         </div>
       </section>

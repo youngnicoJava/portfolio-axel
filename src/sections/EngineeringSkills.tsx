@@ -14,10 +14,12 @@ function SkillList({
   skills,
   selectedProject,
   additional = false,
+  selectionVersion,
 }: {
   skills: string[];
   selectedProject: Project | null;
   additional?: boolean;
+  selectionVersion: number;
 }) {
   const { t } = useLanguage();
   const usedSkills = selectedProject ? getStackSkills(selectedProject) : [];
@@ -29,7 +31,7 @@ function SkillList({
         const used = usedSkills.includes(skill);
         return (
           <li
-            key={`${selectedProject?.slug ?? "all"}:${skill}`}
+            key={`${selectedProject?.slug ?? "all"}:${selectionVersion}:${skill}`}
             className={used ? "skill-used" : ""}
             data-skill={skill}
             aria-label={
@@ -40,6 +42,15 @@ function SkillList({
           >
             <span className="skill-marker">
               <SkillIcon name={skill} />
+              {used && (
+                <svg
+                  className="skill-ring"
+                  viewBox="0 0 40 40"
+                  aria-hidden="true"
+                >
+                  <circle cx="20" cy="20" r="18" pathLength="1" />
+                </svg>
+              )}
               {used && (
                 <span className="skill-check" aria-hidden="true">
                   <Check size={10} strokeWidth={3} />
@@ -57,11 +68,13 @@ function SkillList({
 export function EngineeringSkills({
   selectedProject,
   draggingProject,
+  selectionVersion = 0,
   onSelectStack,
   onClear,
 }: {
   selectedProject: Project | null;
   draggingProject: string | null;
+  selectionVersion?: number;
   onSelectStack: (slug: string) => void;
   onClear: () => void;
 }) {
@@ -143,6 +156,7 @@ export function EngineeringSkills({
             <SkillList
               skills={group.skills}
               selectedProject={selectedProject}
+              selectionVersion={selectionVersion}
             />
           </div>
         ))}
@@ -159,6 +173,7 @@ export function EngineeringSkills({
           <SkillList
             skills={additionalSkills}
             selectedProject={selectedProject}
+            selectionVersion={selectionVersion}
             additional
           />
         ) : (

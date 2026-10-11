@@ -138,7 +138,15 @@ export function FeaturedProjects({
                   href={`/projects/${project.slug}`}
                 />
                 <div className="project-meta">
-                  <span>{project.category}</span>
+                  <span>
+                    {project.category}{" "}
+                    <span className="project-source-divider" aria-hidden="true">
+                      |
+                    </span>{" "}
+                    {project.slug === "fixy"
+                      ? t("Demo open-source")
+                      : "Open-source"}
+                  </span>
                   <span>0{index + 1}</span>
                 </div>
                 <Link
@@ -191,7 +199,7 @@ export function FeaturedProjects({
                       href={project.demoRepositoryUrl}
                       className="text-button"
                     >
-                      <Github size={16} /> {t("Demo source")}
+                      <Github size={16} /> {t("GitHub repository")}
                     </ProfessionalLink>
                   )}
                   <button
@@ -205,7 +213,7 @@ export function FeaturedProjects({
                     href={project.repositoryUrl}
                     className="text-button"
                   >
-                    <Github size={16} /> GitHub
+                    <Github size={16} /> {t("GitHub repository")}
                   </ProfessionalLink>
                   {project.videoUrl && (
                     <ProfessionalLink
