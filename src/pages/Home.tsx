@@ -101,7 +101,7 @@ export default function Home({
             />
           </div>
           <span className="portrait-coordinate">
-            {t("A human approach to software.")}
+            
           </span>
           <span className="portrait-mark" aria-hidden="true">
             +
