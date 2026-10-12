@@ -127,7 +127,7 @@ export const spanish: Record<string, string> = {
     "Desarrollo aplicaciones confiables que convierten problemas complejos en experiencias simples.",
   "THE PERSON BEHIND THE CODE": "LA PERSONA DETRÁS DEL CÓDIGO",
   "Personal photo": "Foto personal",
-  "A human approach to software.": "Una mirada humana al software.",
+  
   "BACKEND MINDSET. FULL-STACK PERSPECTIVE.":
     "ENFOQUE BACKEND. PERSPECTIVA FULL-STACK.",
   "Take a closer look": "Conocé mis proyectos",
